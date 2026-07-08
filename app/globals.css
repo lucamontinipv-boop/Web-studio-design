@@ -1,0 +1,176 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: #F2ECDD;
+  color: #1C1912;
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+#root {
+  overflow-x: hidden;
+}
+
+::selection {
+  background: #C9A24B;
+  color: #15130F;
+}
+
+.font-display {
+  font-family: "Space Grotesk", sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.glass {
+  background: rgba(245, 241, 230, 0.06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(245, 241, 230, 0.1);
+}
+
+.glass-light {
+  background: rgba(255, 253, 247, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(21, 19, 15, 0.08);
+}
+
+.text-gradient-gold {
+  background: linear-gradient(95deg, #D9BC78 0%, #C9A24B 45%, #8A6F2E 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.grain-bg {
+  background-image: radial-gradient(circle at 1px 1px, rgba(21, 19, 15, 0.035) 1px, transparent 0);
+  background-size: 26px 26px;
+}
+
+
+.auto-marquee {
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+  max-width: 100vw;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
+  touch-action: pan-x;
+  cursor: grab;
+  contain: layout paint;
+}
+
+.auto-marquee:active,
+.auto-marquee.is-paused {
+  cursor: grabbing;
+  scroll-snap-type: x mandatory;
+}
+
+.auto-marquee-track {
+  display: flex;
+  width: max-content;
+  transform: translate3d(0, 0, 0);
+  will-change: scroll-position;
+}
+
+.auto-marquee-cycle {
+  display: flex;
+  flex-shrink: 0;
+  padding-inline: 1.25rem;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .auto-marquee-track {
+    transform: none !important;
+  }
+}
+
+
+.auto-scroll-strip {
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+  max-width: 100vw;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  touch-action: pan-x pan-y;
+  cursor: grab;
+  contain: layout paint;
+}
+
+.auto-scroll-strip:active,
+.auto-scroll-strip.is-manual {
+  cursor: grabbing;
+}
+
+.auto-scroll-track {
+  display: flex;
+  width: max-content;
+  transform: translate3d(0, 0, 0);
+  animation: autoScrollMarquee var(--marquee-duration, 42s) linear infinite;
+  will-change: transform;
+  padding-bottom: 0.25rem;
+}
+
+.auto-scroll-strip:hover .auto-scroll-track,
+.auto-scroll-strip.is-manual .auto-scroll-track {
+  animation-play-state: paused;
+}
+
+.auto-scroll-cycle {
+  display: flex;
+  flex-shrink: 0;
+  padding-inline: 0.625rem;
+}
+
+@media (min-width: 640px) {
+  .auto-scroll-cycle {
+    padding-inline: 1rem;
+  }
+}
+
+@keyframes autoScrollMarquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .auto-scroll-track {
+    animation: none !important;
+    transform: none !important;
+  }
+}
