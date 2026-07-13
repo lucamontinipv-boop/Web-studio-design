@@ -2,15 +2,15 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Siti Web e Landing Page per Attività Locali e Professionisti | web-studiodesign",
+  title: "Siti Web e Landing Page su Misura | web-studiodesign",
   description:
-    "Creo siti web e landing page chiari, veloci e su misura per attività locali, professionisti e piccoli brand che vogliono farsi trovare online e ricevere più richieste.",
+    "Progetto siti web e landing page chiari, veloci e mobile-first per attività e professionisti. Struttura, copy, design e contatti diretti in un unico progetto.",
   robots: "index, follow",
   openGraph: {
     type: "website",
-    title: "Siti Web e Landing Page per Attività Locali e Professionisti | web-studiodesign",
+    title: "Siti Web e Landing Page su Misura | web-studiodesign",
     description:
-      "Un sito chiaro, veloce e fatto per portare valore percepito e contatti reali. Attività locali, professionisti, strutture ricettive, piccoli brand.",
+      "Pagine su misura che aiutano chi ti trova online a capire cosa offri, fidarsi e contattarti senza perdere tempo.",
   },
 };
 

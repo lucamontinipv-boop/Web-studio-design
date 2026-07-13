@@ -1,45 +1,39 @@
-import type { CSSProperties } from "react";
 import { hero, WHATSAPP_LINK } from "@/data/content";
 import ImageWithFallback from "./ImageWithFallback";
 import Reveal from "./Reveal";
 
-const desktopLayout = [
-  { className: "md:w-[76%] md:left-0 md:top-4", tilt: -2.5 },
-  { className: "md:w-[70%] md:right-0 md:top-[34%]", tilt: 2 },
-  { className: "md:w-[62%] md:left-10 md:bottom-0", tilt: -1 },
-];
-
 type Preview = (typeof hero.previews)[number];
-type Layout = (typeof desktopLayout)[number];
 
-function PreviewCard({ preview, layout, priority = false }: { preview: Preview; layout: Layout; priority?: boolean }) {
+function ProjectPreview({ preview, priority = false }: { preview: Preview; priority?: boolean }) {
   return (
-    <div
-      className={`group relative md:absolute ${layout.className} block shrink-0 w-[82vw] max-w-[320px] sm:max-w-[380px] md:max-w-none md:aspect-[16/11] aspect-[16/10] overflow-hidden rounded-2xl border border-graphite/10 bg-white shadow-lg shadow-graphite/10 snap-start`}
-      style={{ "--tilt": `${layout.tilt}deg` } as CSSProperties}
+    <a
+      href={preview.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group block overflow-hidden rounded-2xl border border-graphite/10 bg-white shadow-lg shadow-graphite/10 transition-transform duration-300 hover:-translate-y-1"
     >
-      <div className="md:animate-floatSlow h-full w-full">
-        <ImageWithFallback
-          src={preview.image}
-          alt={preview.title}
-          width={preview.width}
-          height={preview.height}
-          priority={priority}
-          className="h-full w-full bg-ivory-dim"
-          imgClassName="transition-transform duration-700 group-hover:scale-105"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-graphite/78 via-graphite/8 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 p-4">
-          <p className="text-[10px] uppercase tracking-[0.12em] text-gold-soft font-display font-semibold">
-            {preview.category}
-          </p>
-          <p className="mt-1 font-display font-semibold text-base text-cream">{preview.title}</p>
-          <p className="mt-1 text-xs text-cream/75 flex items-center gap-1">
-            Esempio sito <i className="ti ti-arrow-up-right" aria-hidden="true" />
-          </p>
+      <ImageWithFallback
+        src={preview.image}
+        alt={`Anteprima del progetto ${preview.title}`}
+        width={preview.width}
+        height={preview.height}
+        priority={priority}
+        className="aspect-[3/2] w-full bg-ivory-dim"
+        imgClassName="transition-transform duration-700 group-hover:scale-[1.03]"
+      />
+      <div className="p-4 sm:p-5">
+        <p className="text-[10px] uppercase tracking-[0.14em] text-clay font-display font-semibold">
+          {preview.category}
+        </p>
+        <div className="mt-2 flex items-end justify-between gap-3">
+          <p className="font-display font-semibold text-lg text-graphite">{preview.title}</p>
+          <span className="inline-flex items-center gap-1 text-xs text-gold-deep font-display font-semibold">
+            {preview.cta}
+            <i className="ti ti-arrow-up-right" aria-hidden="true" />
+          </span>
         </div>
       </div>
-    </div>
+    </a>
   );
 }
 
@@ -48,25 +42,24 @@ export default function Hero() {
     <section id="top" className="relative overflow-hidden bg-ivory pt-24 pb-14 md:pt-40 md:pb-24 text-graphite">
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_85%_18%,rgba(154,63,44,0.10),transparent_32%),radial-gradient(circle_at_35%_14%,rgba(201,162,75,0.12),transparent_34%)]" />
 
-      <div className="relative max-w-6xl mx-auto px-5 sm:px-8 grid md:grid-cols-[1.08fr_0.92fr] gap-10 md:gap-10 items-center">
+      <div className="relative max-w-6xl mx-auto px-5 sm:px-8 grid lg:grid-cols-[1.02fr_0.98fr] gap-12 lg:gap-14 items-center">
         <div className="max-w-full min-w-0">
           <Reveal>
-            <p className="flex items-center gap-3 text-[11px] sm:text-sm uppercase tracking-[0.18em] sm:tracking-[0.24em] text-clay font-display font-semibold mb-5 md:mb-7">
+            <p className="flex items-center gap-3 text-[11px] sm:text-sm uppercase tracking-[0.16em] sm:tracking-[0.2em] text-clay font-display font-semibold mb-5 md:mb-7">
               <span className="h-px w-10 sm:w-12 bg-clay" aria-hidden="true" />
               {hero.eyebrow}
             </p>
           </Reveal>
 
           <Reveal delay={0.06}>
-            <h1 className="max-w-full font-display font-semibold text-[2.42rem] xs:text-[2.65rem] sm:text-[4.5rem] lg:text-[5.45rem] leading-[1.02] sm:leading-[0.96] tracking-[-0.055em] text-graphite text-balance">
-              <span className="block">Un sito che fa trovare</span>
-              <span className="block">la tua attività e porta</span>
-              <span className="block italic font-medium text-clay tracking-[-0.06em]">contatti veri.</span>
+            <h1 className="max-w-full font-display font-semibold text-[2.65rem] sm:text-[4.4rem] lg:text-[5rem] leading-[1.02] sm:leading-[0.97] tracking-[-0.055em] text-graphite text-balance">
+              <span className="block">{hero.title}</span>
+              <span className="block italic font-medium text-clay tracking-[-0.06em]">{hero.accent}</span>
             </h1>
           </Reveal>
 
           <Reveal delay={0.12}>
-            <p className="mt-6 md:mt-8 text-[1.05rem] sm:text-xl leading-relaxed text-muted-dark max-w-3xl">
+            <p className="mt-6 md:mt-8 text-[1.05rem] sm:text-xl leading-relaxed text-muted-dark max-w-2xl">
               {hero.subtitle}
             </p>
           </Reveal>
@@ -104,18 +97,13 @@ export default function Hero() {
           </Reveal>
         </div>
 
-        <div className="relative w-full md:max-w-md md:aspect-[4/5] mx-auto min-w-0">
-          <div className="md:hidden flex gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-px-5 pb-2 -mx-5 px-5 touch-pan-x">
+        <Reveal delay={0.12} className="relative">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-1">
             {hero.previews.map((preview, i) => (
-              <PreviewCard key={preview.title} preview={preview} layout={desktopLayout[i]} priority={i === 0} />
+              <ProjectPreview key={preview.title} preview={preview} priority={i === 0} />
             ))}
           </div>
-          <div className="hidden md:block relative w-full aspect-[4/5]">
-            {hero.previews.map((preview, i) => (
-              <PreviewCard key={preview.title} preview={preview} layout={desktopLayout[i]} priority={i === 0} />
-            ))}
-          </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

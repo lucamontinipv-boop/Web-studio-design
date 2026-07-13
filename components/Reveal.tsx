@@ -19,8 +19,8 @@ export default function Reveal({ children, delay = 0, y = 24, className = "" }: 
 
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (media.matches) {
-      setVisible(true);
-      return;
+      const frame = window.requestAnimationFrame(() => setVisible(true));
+      return () => window.cancelAnimationFrame(frame);
     }
 
     const observer = new IntersectionObserver(
