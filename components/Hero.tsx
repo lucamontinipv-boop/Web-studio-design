@@ -1,6 +1,33 @@
 import { hero, WHATSAPP_LINK } from "@/data/content";
 import ImageWithFallback from "./ImageWithFallback";
 
+function ArrowUpRightIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-[1em] w-[1em] shrink-0" aria-hidden="true">
+      <path d="M7 17 17 7" />
+      <path d="M7 7h10v10" />
+    </svg>
+  );
+}
+
+function ArrowDownIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-[1em] w-[1em] shrink-0" aria-hidden="true">
+      <path d="M12 5v14" />
+      <path d="m6 13 6 6 6-6" />
+    </svg>
+  );
+}
+
+function WhatsAppIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5 shrink-0" aria-hidden="true">
+      <path d="M3.4 20.6l1.25-3.35A8.5 8.5 0 1 1 7 19.35L3.4 20.6Z" />
+      <path d="M8.4 8.1c.2-.45.42-.46.72-.47h.42c.14 0 .36.05.55.46l.7 1.68c.08.2.07.38-.03.55l-.5.72c-.13.17-.24.32-.1.57.14.25.63 1.03 1.35 1.67.93.82 1.7 1.08 1.96 1.2.25.13.4.1.55-.07l.82-.95c.18-.2.36-.16.6-.08l1.62.77c.25.12.42.18.48.28.06.1.06.58-.14 1.13-.2.55-1.16 1.05-1.6 1.12-.42.07-.97.1-1.56-.1-.36-.12-.82-.27-1.42-.53-.25-.11-4.37-1.62-5.95-5.42-.44-1.05-.47-1.92-.13-2.54Z" />
+    </svg>
+  );
+}
+
 type Preview = (typeof hero.previews)[number];
 
 function ProjectPreview({ preview, index = 0 }: { preview: Preview; index?: number }) {
@@ -27,7 +54,7 @@ function ProjectPreview({ preview, index = 0 }: { preview: Preview; index?: numb
           <p className="font-display font-semibold text-lg text-graphite">{preview.title}</p>
           <span className="inline-flex items-center gap-1 text-xs text-gold-deep font-display font-semibold">
             {preview.cta}
-            <i className="ti ti-arrow-up-right" aria-hidden="true" />
+            <ArrowUpRightIcon />
           </span>
         </div>
       </div>
@@ -65,7 +92,7 @@ export default function Hero() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 rounded-xl bg-graphite px-6 py-4 font-display font-semibold text-cream hover:bg-ink-soft transition-colors"
             >
-              <i className="ti ti-brand-whatsapp text-xl" aria-hidden="true" />
+              <WhatsAppIcon />
               {hero.ctaPrimary}
             </a>
             <a
@@ -73,7 +100,7 @@ export default function Hero() {
               className="inline-flex items-center justify-center gap-2 rounded-xl border border-graphite/15 bg-white/55 px-6 py-4 font-display font-semibold text-graphite hover:bg-white transition-colors"
             >
               {hero.ctaSecondary}
-              <i className="ti ti-arrow-down" aria-hidden="true" />
+              <ArrowDownIcon />
             </a>
           </div>
 

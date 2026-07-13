@@ -1,5 +1,24 @@
 import { nav, WHATSAPP_LINK } from "@/data/content";
 
+function WhatsAppIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M3.4 20.6l1.25-3.35A8.5 8.5 0 1 1 7 19.35L3.4 20.6Z" />
+      <path d="M8.4 8.1c.2-.45.42-.46.72-.47h.42c.14 0 .36.05.55.46l.7 1.68c.08.2.07.38-.03.55l-.5.72c-.13.17-.24.32-.1.57.14.25.63 1.03 1.35 1.67.93.82 1.7 1.08 1.96 1.2.25.13.4.1.55-.07l.82-.95c.18-.2.36-.16.6-.08l1.62.77c.25.12.42.18.48.28.06.1.06.58-.14 1.13-.2.55-1.16 1.05-1.6 1.12-.42.07-.97.1-1.56-.1-.36-.12-.82-.27-1.42-.53-.25-.11-4.37-1.62-5.95-5.42-.44-1.05-.47-1.92-.13-2.54Z" />
+    </svg>
+  );
+}
+
 export default function Header() {
   return (
     <header className="fixed top-0 inset-x-0 z-50 border-b bg-ivory border-graphite/10">
@@ -28,7 +47,7 @@ export default function Header() {
             rel="noopener noreferrer"
             className="hidden sm:inline-flex items-center gap-2 rounded-lg md:rounded-xl bg-graphite px-5 md:px-6 py-3 text-sm md:text-base font-display font-semibold text-cream hover:bg-ink-soft transition-colors"
           >
-            <i className="ti ti-brand-whatsapp text-lg" aria-hidden="true" />
+            <WhatsAppIcon className="h-[1.125rem] w-[1.125rem] shrink-0" />
             WhatsApp
           </a>
 
@@ -58,7 +77,7 @@ export default function Header() {
                   rel="noopener noreferrer"
                   className="mobile-menu-link inline-flex justify-center items-center gap-2 rounded-xl bg-graphite px-5 py-3 text-sm font-semibold text-cream"
                 >
-                  <i className="ti ti-brand-whatsapp text-lg" aria-hidden="true" />
+                  <WhatsAppIcon className="h-[1.125rem] w-[1.125rem] shrink-0" />
                   Scrivimi su WhatsApp
                 </a>
               </nav>

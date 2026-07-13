@@ -597,6 +597,27 @@ body {
   white-space: nowrap;
 }
 
+
+/* Reserve icon geometry before the deferred Tabler font stylesheet arrives.
+   The glyph can paint later without changing surrounding layout. */
+i.ti {
+  display: inline-block;
+  width: 1em;
+  min-width: 1em;
+  height: 1em;
+  flex: 0 0 1em;
+  line-height: 1;
+  text-align: center;
+  vertical-align: -0.125em;
+}
+
+i.ti::before {
+  display: block;
+  width: 100%;
+  height: 100%;
+  line-height: 1;
+}
+
 /* ================= PERFORMANCE-FIRST RENDERING ================= */
 
 /* Keep the initial viewport light. Chromium renders these sections when they
@@ -608,10 +629,6 @@ body {
     contain-intrinsic-size: auto 900px;
   }
 
-  .hero-previews {
-    content-visibility: auto;
-    contain-intrinsic-size: auto 860px;
-  }
 }
 
 /* CSS-only marquee interaction states. */
