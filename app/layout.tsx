@@ -180,13 +180,84 @@ export default function RootLayout({
                   window.setTimeout(loadClarity, 6500);
                 }, { once: true });
 
+                var getLinkLocation = function (link) {
+                  if (link.closest('header')) return 'header';
+                  if (link.closest('footer')) return 'footer';
+
+                  var section = link.closest('section[id]');
+                  if (section && section.id) return section.id;
+
+                  return 'page';
+                };
+
+                var getLinkLabel = function (link) {
+                  var explicitLabel = link.getAttribute('data-analytics-label');
+                  var ariaLabel = link.getAttribute('aria-label');
+                  var visibleText = (link.textContent || '').replace(/\\s+/g, ' ').trim();
+
+                  return explicitLabel || ariaLabel || visibleText || 'link';
+                };
+
+                var sendAnalyticsEvent = function (eventName, parameters) {
+                  loadAnalytics();
+
+                  if (typeof window.gtag === 'function') {
+                    window.gtag('event', eventName, parameters);
+                  }
+                };
+
                 document.addEventListener('click', function (event) {
                   var target = event.target;
                   if (!(target instanceof Element)) return;
-                  var link = target.closest('.mobile-menu-link');
+
+                  var mobileLink = target.closest('.mobile-menu-link');
+                  if (mobileLink) {
+                    var menu = document.getElementById('mobile-navigation');
+                    if (menu && menu instanceof HTMLDetailsElement) menu.open = false;
+                  }
+
+                  var link = target.closest('a[href]');
                   if (!link) return;
-                  var menu = document.getElementById('mobile-navigation');
-                  if (menu && menu instanceof HTMLDetailsElement) menu.open = false;
+
+                  var href = link.getAttribute('href') || '';
+                  var absoluteUrl = link.href || href;
+                  var label = getLinkLabel(link);
+                  var location = getLinkLocation(link);
+                  var commonParameters = {
+                    cta_text: label,
+                    cta_location: location,
+                    link_url: absoluteUrl,
+                    page_path: window.location.pathname
+                  };
+
+                  if (/wa\\.me|api\\.whatsapp\\.com|whatsapp:/i.test(absoluteUrl)) {
+                    sendAnalyticsEvent('generate_lead', {
+                      method: 'whatsapp',
+                      cta_text: label,
+                      cta_location: location,
+                      link_url: absoluteUrl,
+                      page_path: window.location.pathname
+                    });
+                    return;
+                  }
+
+                  if (href.charAt(0) === '#') {
+                    sendAnalyticsEvent('cta_click', commonParameters);
+                    return;
+                  }
+
+                  try {
+                    var destination = new URL(absoluteUrl, window.location.href);
+
+                    if (destination.hostname !== window.location.hostname) {
+                      sendAnalyticsEvent(
+                        location === 'progetti' ? 'portfolio_project_click' : 'outbound_click',
+                        commonParameters
+                      );
+                    }
+                  } catch (error) {
+                    // Ignore malformed links without affecting navigation.
+                  }
                 });
               })();
             `,

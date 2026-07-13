@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="bg-ink border-t border-white/10 py-10">
       <div className="max-w-6xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
         <p className="text-sm text-muted-light">
-          <span className="font-display font-semibold text-cream">web-studiodesign</span> — Siti web & landing page
+          <span className="font-display font-semibold text-cream">Montini Creative</span> — Siti web & landing page
         </p>
         <p className="text-xs text-muted-light">© {new Date().getFullYear()} Tutti i diritti riservati</p>
         <a
