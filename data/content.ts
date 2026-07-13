@@ -123,7 +123,10 @@ export const portfolio = {
       intervention:
         "Ho organizzato la pagina intorno al problema, al metodo, alle fasi del percorso, alle FAQ e alla richiesta di informazioni su WhatsApp.",
       result:
-        "Il coaching viene presentato come un servizio strutturato, non come una semplice serie di call.",
+        "Un percorso più semplice da capire, con una proposta di valore ordinata e un contatto diretto nei punti decisivi.",
+      testimonial:
+        "Luca è riuscito a trasformare tutte le mie idee in una pagina finalmente chiara e coerente.",
+      testimonialAuthor: "Noemi — Kaiemi Coaching",
       href: "https://kaiemi-next.vercel.app/",
       cta: "Visita Kaiemi Coaching",
       gallery: [
@@ -169,6 +172,9 @@ export const portfolio = {
         "Ho dato priorità alla presentazione della struttura, ai servizi, alle attività, alle informazioni pratiche e ai contatti diretti.",
       result:
         "Una presenza online più rassicurante, ordinata e orientata alla richiesta di informazioni o alla prenotazione di una visita.",
+      testimonial:
+        "Il nuovo sito ha superato le nostre aspettative. Oltre ad aver apprezzato molto il risultato finale, abbiamo registrato un notevole aumento delle richieste mensili e dei contatti provenienti da Google.",
+      testimonialAuthor: "Residenza Romano",
       href: "https://www.residenzaromano.it/",
       cta: "Visita Residenza Romano",
       gallery: [
@@ -260,8 +266,11 @@ export const process = {
 
 export const pricing = {
   eyebrow: "Preventivo trasparente",
-  title: "Sai cosa è incluso e quanto costa prima di iniziare.",
-  text: "Dopo una prima conversazione preparo una proposta chiara con struttura del sito, funzionalità, tempi e prezzo. Il costo concordato non cambia durante il lavoro, a meno che non vengano richieste attività aggiuntive.",
+  title: "Landing page a partire da 300 €.",
+  text: "Il prezzo di partenza riguarda una landing page essenziale, costruita su una struttura chiara e con le funzionalità concordate. Il costo finale dipende da contenuti, numero di sezioni, integrazioni e livello di personalizzazione. Prima di iniziare ricevi sempre una proposta completa con tempi, attività incluse e prezzo definitivo.",
+  startingPrice: "300 €",
+  startingPriceLabel: "Prezzo di partenza",
+  startingPriceNote: "Per una landing page essenziale. Dominio, servizi esterni e richieste aggiuntive vengono indicati separatamente.",
   included: [
     "Numero di pagine o sezioni",
     "Supporto su testi e struttura",
@@ -287,7 +296,7 @@ export const faq = {
     },
     {
       q: "Quanto costa?",
-      a: "Dipende da struttura, contenuti e funzionalità. Dopo la prima conversazione ricevi un preventivo chiaro prima di iniziare qualsiasi lavoro.",
+      a: "Le landing page essenziali partono da 300 €. Il prezzo finale dipende da struttura, contenuti, integrazioni e livello di personalizzazione. Dopo la prima conversazione ricevi un preventivo chiaro prima di iniziare qualsiasi lavoro.",
     },
     {
       q: "Cosa è incluso nel preventivo?",

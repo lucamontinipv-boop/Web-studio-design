@@ -31,45 +31,53 @@ function ProjectShot({ shot, projectTitle }: { shot: GalleryShot; projectTitle: 
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.055] shadow-lg shadow-black/20 transition-colors hover:border-gold/35">
-      <a href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`Visita ${project.title}`}>
-        <ImageWithFallback
-          src={project.image}
-          alt={`Anteprima del progetto ${project.title}`}
-          width={project.width}
-          height={project.height}
-          className="aspect-[3/2] w-full bg-ink-soft"
-          imgClassName="object-top transition-transform duration-700 group-hover:scale-[1.03]"
-        />
-      </a>
-      <div className="p-6 sm:p-7">
-        <span className="text-xs uppercase tracking-[0.12em] text-gold font-display font-semibold">{project.tag}</span>
-        <h3 className="mt-3 font-display font-semibold text-2xl text-cream">{project.title}</h3>
-
-        <dl className="mt-6 space-y-5">
-          <div>
-            <dt className="text-xs uppercase tracking-[0.12em] text-gold-soft font-display font-semibold">La sfida</dt>
-            <dd className="mt-2 text-sm text-muted-light leading-relaxed">{project.challenge}</dd>
-          </div>
-          <div>
-            <dt className="text-xs uppercase tracking-[0.12em] text-gold-soft font-display font-semibold">Il lavoro</dt>
-            <dd className="mt-2 text-sm text-muted-light leading-relaxed">{project.intervention}</dd>
-          </div>
-          <div>
-            <dt className="text-xs uppercase tracking-[0.12em] text-gold-soft font-display font-semibold">Il risultato comunicativo</dt>
-            <dd className="mt-2 text-sm text-cream/90 leading-relaxed">{project.result}</dd>
-          </div>
-        </dl>
-
+    <article className="h-full rounded-2xl border border-white/10 bg-white/[0.055] p-6 sm:p-8 shadow-lg shadow-black/20 transition-colors hover:border-gold/35">
+      <div className="flex items-start justify-between gap-5">
+        <div>
+          <span className="text-xs uppercase tracking-[0.12em] text-gold font-display font-semibold">{project.tag}</span>
+          <h3 className="mt-3 font-display font-semibold text-2xl sm:text-3xl text-cream">{project.title}</h3>
+        </div>
         <a
           href={project.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-7 inline-flex items-center gap-1.5 text-sm text-gold font-display font-semibold hover:text-gold-soft transition-colors"
+          aria-label={`Visita ${project.title}`}
+          className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-white/10 bg-white/[0.06] text-gold transition-colors hover:border-gold/40 hover:bg-gold/10"
         >
-          {project.cta} <i className="ti ti-arrow-up-right" aria-hidden="true" />
+          <i className="ti ti-arrow-up-right text-lg" aria-hidden="true" />
         </a>
       </div>
+
+      <dl className="mt-7 grid gap-5 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+        <div>
+          <dt className="text-xs uppercase tracking-[0.12em] text-gold-soft font-display font-semibold">La sfida</dt>
+          <dd className="mt-2 text-sm text-muted-light leading-relaxed">{project.challenge}</dd>
+        </div>
+        <div>
+          <dt className="text-xs uppercase tracking-[0.12em] text-gold-soft font-display font-semibold">La soluzione</dt>
+          <dd className="mt-2 text-sm text-muted-light leading-relaxed">{project.intervention}</dd>
+        </div>
+      </dl>
+
+      <p className="mt-6 rounded-xl border border-white/8 bg-black/10 px-4 py-3 text-sm leading-relaxed text-cream/90">
+        {project.result}
+      </p>
+
+      <blockquote className="mt-6 border-l-2 border-gold pl-4">
+        <p className="text-[0.95rem] italic leading-relaxed text-cream">“{project.testimonial}”</p>
+        <footer className="mt-3 text-xs font-display font-semibold uppercase tracking-[0.1em] text-gold-soft">
+          {project.testimonialAuthor}
+        </footer>
+      </blockquote>
+
+      <a
+        href={project.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-7 inline-flex items-center gap-1.5 text-sm text-gold font-display font-semibold hover:text-gold-soft transition-colors"
+      >
+        {project.cta} <i className="ti ti-arrow-up-right" aria-hidden="true" />
+      </a>
     </article>
   );
 }

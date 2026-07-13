@@ -16,7 +16,19 @@ export default function Pricing() {
             <Reveal delay={0.1}>
               <p className="mt-5 text-muted-dark leading-relaxed">{pricing.text}</p>
             </Reveal>
-            <Reveal delay={0.15} className="mt-8">
+
+            <Reveal delay={0.13} className="mt-7">
+              <div className="inline-flex max-w-md items-center gap-5 rounded-2xl border border-graphite/10 bg-white/70 px-5 py-4 shadow-sm">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.12em] text-clay font-display font-semibold">{pricing.startingPriceLabel}</p>
+                  <p className="mt-1 font-display text-3xl font-semibold text-graphite">{pricing.startingPrice}</p>
+                </div>
+                <div className="h-12 w-px bg-graphite/10" aria-hidden="true" />
+                <p className="text-xs leading-relaxed text-muted-dark">{pricing.startingPriceNote}</p>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.16} className="mt-8">
               <a
                 href={WHATSAPP_LINK}
                 target="_blank"

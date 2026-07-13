@@ -17,7 +17,7 @@ function ProblemVisual({ card }: ProblemVisualProps) {
         <div className="visual-window visual-window-front">
           <span />
           <span />
-          <strong>3 sec</strong>
+          <strong>Pochi secondi</strong>
         </div>
       </div>
     );
