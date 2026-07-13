@@ -633,8 +633,7 @@ i.ti::before {
 
 /* CSS-only marquee interaction states. */
 .auto-scroll-strip:hover .auto-scroll-track,
-.auto-scroll-strip:focus .auto-scroll-track,
-.auto-scroll-strip:focus-within .auto-scroll-track,
+.auto-scroll-strip:focus-visible .auto-scroll-track,
 .auto-scroll-strip:active .auto-scroll-track {
   animation-play-state: paused;
 }
@@ -645,17 +644,17 @@ i.ti::before {
 }
 
 @media (max-width: 767px) {
-  /* Decorative motion is disabled on small devices to reduce paint work.
-     The horizontal strips remain touch-scrollable. */
+  /* Keep decorative hero motion disabled on small devices, but preserve the
+     lightweight CSS-only card marquees. */
   .hero-orbit {
     display: none;
   }
 
-  .hero-preview-card,
-  .auto-scroll-track {
+  .hero-preview-card {
     animation: none !important;
     transform: none !important;
   }
+
 
   .hero-background {
     background: radial-gradient(circle at 85% 16%, rgba(154, 63, 44, 0.08), transparent 36%);

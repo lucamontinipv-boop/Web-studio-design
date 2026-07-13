@@ -96,12 +96,6 @@ export default function Portfolio() {
           <Reveal delay={0.1}>
             <p className="mt-4 text-muted-light leading-relaxed max-w-2xl">{portfolio.subtitle}</p>
           </Reveal>
-          <Reveal delay={0.14}>
-            <p className="mt-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.055] px-4 py-2 text-xs font-display font-semibold text-muted-light">
-              <i className="ti ti-hand-move" aria-hidden="true" />
-              Trascina le schermate: il movimento si ferma e riparte automaticamente.
-            </p>
-          </Reveal>
         </div>
       </div>
 

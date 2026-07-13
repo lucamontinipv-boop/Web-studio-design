@@ -118,12 +118,6 @@ export default function Problem() {
           <Reveal delay={0.1}>
             <p className="mt-4 text-muted-dark leading-relaxed">{problem.text}</p>
           </Reveal>
-          <Reveal delay={0.14}>
-            <p className="mt-5 inline-flex items-center gap-2 rounded-full border border-graphite/10 bg-white/55 px-4 py-2 text-xs font-display font-semibold text-muted-dark">
-              <i className="ti ti-hand-move" aria-hidden="true" />
-              Passa sopra o trascina: le card si fermano e poi ripartono.
-            </p>
-          </Reveal>
         </div>
       </div>
 
