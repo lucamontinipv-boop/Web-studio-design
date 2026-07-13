@@ -16,17 +16,16 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 border-b transition-all duration-300 ${
-        scrolled
-          ? "bg-ivory/94 backdrop-blur-xl border-graphite/10 shadow-sm"
-          : "bg-ivory/90 backdrop-blur-md border-graphite/10"
+      className={`fixed top-0 inset-x-0 z-50 border-b bg-ivory border-graphite/10 ${
+        scrolled ? "shadow-sm" : ""
       }`}
     >
       <div className="max-w-6xl mx-auto px-5 sm:px-8 h-16 md:h-20 flex items-center justify-between gap-4">
         <a
           href="#top"
-          className="font-sans font-semibold text-xl sm:text-2xl md:text-[1.7rem] tracking-tight text-graphite"
+          className="font-semibold text-xl sm:text-2xl md:text-[1.7rem] tracking-tight text-graphite"
           aria-label="Torna all'inizio"
+          style={{ fontFamily: "Arial, Helvetica, sans-serif" }}
         >
           web<span className="text-gold-deep">-</span>studiodesign
         </a>
