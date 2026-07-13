@@ -29,7 +29,7 @@ export default function Header() {
           aria-label="Torna all'inizio"
           style={{ fontFamily: "Arial, Helvetica, sans-serif" }}
         >
-          web<span className="text-gold-deep">-</span>studiodesign
+          Montini Creative
         </a>
 
         <nav className="hidden lg:flex items-center gap-6 ml-auto" aria-label="Navigazione principale">
