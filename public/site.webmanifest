@@ -1,0 +1,21 @@
+{
+  "name": "Montini Creative",
+  "short_name": "Montini Creative",
+  "description": "Siti web e landing page su misura per attività e professionisti.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5eddb",
+  "theme_color": "#181712",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

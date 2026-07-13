@@ -1,31 +1,79 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Siti Web e Landing Page su Misura | web-studiodesign",
+  metadataBase: new URL("https://montinicreative.it"),
+  title: {
+    default: "Siti Web e Landing Page su Misura | Montini Creative",
+    template: "%s | Montini Creative",
+  },
   description:
     "Progetto siti web e landing page chiari, veloci e mobile-first per attività e professionisti. Struttura, copy, design e contatti diretti in un unico progetto.",
-  robots: "index, follow",
+  applicationName: "Montini Creative",
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
+  manifest: "/site.webmanifest",
   openGraph: {
     type: "website",
-    title: "Siti Web e Landing Page su Misura | web-studiodesign",
+    locale: "it_IT",
+    url: "https://montinicreative.it",
+    siteName: "Montini Creative",
+    title: "Siti Web e Landing Page su Misura | Montini Creative",
+    description:
+      "Pagine su misura che aiutano chi ti trova online a capire cosa offri, fidarsi e contattarti senza perdere tempo.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Siti Web e Landing Page su Misura | Montini Creative",
     description:
       "Pagine su misura che aiutano chi ti trova online a capire cosa offri, fidarsi e contattarti senza perdere tempo.",
   },
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#181712",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="it">
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
         <link
           href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
           rel="stylesheet"
         />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css" />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css"
+        />
       </head>
       <body>{children}</body>
     </html>
