@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 
 const inter = Inter({
@@ -104,11 +103,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="it"
-      className={`${inter.variable} ${spaceGrotesk.variable}`}
-    >
+    <html lang="it" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <head>
+        <link
+          rel="preload"
+          as="image"
+          href="/images/projects/kaiemi/kaiemi-01-hero.webp"
+          media="(min-width: 1024px)"
+          fetchPriority="high"
+        />
         <noscript>
           <link
             rel="stylesheet"
@@ -120,41 +123,75 @@ export default function RootLayout({
       <body>
         {children}
 
-        <Script id="load-tabler-icons" strategy="afterInteractive">
-          {`
-            (function () {
-              if (document.querySelector('link[data-tabler-icons]')) return;
-              var link = document.createElement('link');
-              link.rel = 'stylesheet';
-              link.href = 'https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css';
-              link.setAttribute('data-tabler-icons', 'true');
-              document.head.appendChild(link);
-            })();
-          `}
-        </Script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function () {
+                var once = function (fn) {
+                  var done = false;
+                  return function () {
+                    if (done) return;
+                    done = true;
+                    fn();
+                  };
+                };
 
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-TJQZPFMQXX"
-          strategy="afterInteractive"
+                var loadIcons = once(function () {
+                  if (document.querySelector('link[data-tabler-icons]')) return;
+                  var link = document.createElement('link');
+                  link.rel = 'stylesheet';
+                  link.href = 'https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css';
+                  link.setAttribute('data-tabler-icons', 'true');
+                  document.head.appendChild(link);
+                });
+
+                var loadAnalytics = once(function () {
+                  window.dataLayer = window.dataLayer || [];
+                  window.gtag = function(){ window.dataLayer.push(arguments); };
+                  window.gtag('js', new Date());
+                  window.gtag('config', 'G-TJQZPFMQXX');
+
+                  var script = document.createElement('script');
+                  script.async = true;
+                  script.src = 'https://www.googletagmanager.com/gtag/js?id=G-TJQZPFMQXX';
+                  document.head.appendChild(script);
+                });
+
+                var loadClarity = once(function () {
+                  (function(c,l,a,r,i,t,y){
+                    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                    t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
+                    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+                  })(window, document, 'clarity', 'script', 'xlq8qld7a5');
+                });
+
+                var interactionEvents = ['pointerdown', 'touchstart', 'keydown'];
+                interactionEvents.forEach(function (eventName) {
+                  window.addEventListener(eventName, function () {
+                    loadIcons();
+                    loadAnalytics();
+                    loadClarity();
+                  }, { once: true, passive: true });
+                });
+
+                window.addEventListener('load', function () {
+                  window.setTimeout(loadIcons, 1200);
+                  window.setTimeout(loadAnalytics, 3500);
+                  window.setTimeout(loadClarity, 6500);
+                }, { once: true });
+
+                document.addEventListener('click', function (event) {
+                  var target = event.target;
+                  if (!(target instanceof Element)) return;
+                  var link = target.closest('.mobile-menu-link');
+                  if (!link) return;
+                  var menu = document.getElementById('mobile-navigation');
+                  if (menu && menu instanceof HTMLDetailsElement) menu.open = false;
+                });
+              })();
+            `,
+          }}
         />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-TJQZPFMQXX');
-          `}
-        </Script>
-
-        <Script id="microsoft-clarity" strategy="lazyOnload">
-          {`
-            (function(c,l,a,r,i,t,y){
-              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-            })(window, document, "clarity", "script", "xlq8qld7a5");
-          `}
-        </Script>
       </body>
     </html>
   );
