@@ -10,7 +10,7 @@ html {
 body {
   background-color: #F2ECDD;
   color: #1C1912;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-inter), sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
   width: 100%;
@@ -26,7 +26,7 @@ body {
 }
 
 .font-display {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: var(--font-space-grotesk), sans-serif;
   letter-spacing: -0.01em;
 }
 
@@ -306,7 +306,7 @@ body {
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.72);
   color: #6B6455;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: var(--font-space-grotesk), sans-serif;
   font-size: 0.67rem;
   font-weight: 650;
   letter-spacing: 0.04em;
@@ -363,7 +363,7 @@ body {
   border-radius: 50%;
   background: #15130F;
   color: #F2ECDD;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: var(--font-space-grotesk), sans-serif;
   font-size: 0.72rem;
 }
 
@@ -419,7 +419,7 @@ body {
   background: #15130F;
   color: #F2ECDD;
   box-shadow: 0 20px 36px -22px rgba(21, 19, 15, 0.7);
-  font-family: "Space Grotesk", sans-serif;
+  font-family: var(--font-space-grotesk), sans-serif;
   font-weight: 650;
 }
 
@@ -517,7 +517,7 @@ body {
   height: 76px;
   place-items: center;
   border-radius: 16px;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: var(--font-space-grotesk), sans-serif;
   font-size: 1.7rem;
   font-weight: 700;
 }
