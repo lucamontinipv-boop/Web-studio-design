@@ -4,13 +4,13 @@ import Reveal from "./Reveal";
 
 type Preview = (typeof hero.previews)[number];
 
-function ProjectPreview({ preview, priority = false }: { preview: Preview; priority?: boolean }) {
+function ProjectPreview({ preview, priority = false, index = 0 }: { preview: Preview; priority?: boolean; index?: number }) {
   return (
     <a
       href={preview.href}
       target="_blank"
       rel="noopener noreferrer"
-      className="group block overflow-hidden rounded-2xl border border-graphite/10 bg-white shadow-lg shadow-graphite/10 transition-transform duration-300 hover:-translate-y-1"
+      className={`hero-preview-card hero-preview-card-${index + 1} group block overflow-hidden rounded-2xl border border-graphite/10 bg-white shadow-lg shadow-graphite/10 transition-[border-color,box-shadow] duration-300 hover:border-gold-deep/35 hover:shadow-xl hover:shadow-graphite/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-deep`}
     >
       <ImageWithFallback
         src={preview.image}
@@ -19,7 +19,7 @@ function ProjectPreview({ preview, priority = false }: { preview: Preview; prior
         height={preview.height}
         priority={priority}
         className="aspect-[3/2] w-full bg-ivory-dim"
-        imgClassName="transition-transform duration-700 group-hover:scale-[1.03]"
+        imgClassName="object-top transition-transform duration-700 group-hover:scale-[1.035]"
       />
       <div className="p-4 sm:p-5">
         <p className="text-[10px] uppercase tracking-[0.14em] text-clay font-display font-semibold">
@@ -41,6 +41,8 @@ export default function Hero() {
   return (
     <section id="top" className="relative overflow-hidden bg-ivory pt-24 pb-14 md:pt-40 md:pb-24 text-graphite">
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_85%_18%,rgba(154,63,44,0.10),transparent_32%),radial-gradient(circle_at_35%_14%,rgba(201,162,75,0.12),transparent_34%)]" />
+      <div className="hero-orbit hero-orbit-one" aria-hidden="true" />
+      <div className="hero-orbit hero-orbit-two" aria-hidden="true" />
 
       <div className="relative max-w-6xl mx-auto px-5 sm:px-8 grid lg:grid-cols-[1.02fr_0.98fr] gap-12 lg:gap-14 items-center">
         <div className="max-w-full min-w-0">
@@ -100,7 +102,7 @@ export default function Hero() {
         <Reveal delay={0.12} className="relative">
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-1">
             {hero.previews.map((preview, i) => (
-              <ProjectPreview key={preview.title} preview={preview} priority={i === 0} />
+              <ProjectPreview key={preview.title} preview={preview} priority={i === 0} index={i} />
             ))}
           </div>
         </Reveal>

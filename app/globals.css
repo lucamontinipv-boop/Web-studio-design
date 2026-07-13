@@ -174,3 +174,412 @@ body {
     transform: none !important;
   }
 }
+
+/* ================= DYNAMIC PROJECT EXPERIENCE ================= */
+
+.auto-scroll-strip:focus-visible {
+  outline: 2px solid #C9A24B;
+  outline-offset: 6px;
+}
+
+.auto-scroll-strip[data-direction="right"] .auto-scroll-track {
+  animation-name: autoScrollMarqueeReverse;
+}
+
+@keyframes autoScrollMarqueeReverse {
+  from {
+    transform: translate3d(-50%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.project-shot {
+  transition: transform 320ms ease, border-color 320ms ease, box-shadow 320ms ease;
+}
+
+.project-shot:hover {
+  transform: translateY(-6px);
+  border-color: rgba(201, 162, 75, 0.42);
+  box-shadow: 0 28px 70px -34px rgba(0, 0, 0, 0.78);
+}
+
+.hero-preview-card {
+  animation: heroPreviewFloat 7.5s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.hero-preview-card-2 {
+  animation-delay: -3.75s;
+}
+
+.hero-preview-card:hover,
+.hero-preview-card:focus-visible {
+  animation-play-state: paused;
+}
+
+@keyframes heroPreviewFloat {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(-0.35deg);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0) rotate(0.35deg);
+  }
+}
+
+.hero-orbit {
+  position: absolute;
+  border: 1px solid rgba(201, 162, 75, 0.22);
+  border-radius: 999px;
+  pointer-events: none;
+  animation: heroOrbitDrift 16s ease-in-out infinite;
+}
+
+.hero-orbit-one {
+  width: 280px;
+  height: 280px;
+  top: 9%;
+  right: -145px;
+}
+
+.hero-orbit-two {
+  width: 170px;
+  height: 170px;
+  left: -95px;
+  bottom: 8%;
+  animation-delay: -7s;
+}
+
+@keyframes heroOrbitDrift {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translate3d(12px, -14px, 0) scale(1.08);
+    opacity: 0.8;
+  }
+}
+
+/* ================= PROBLEM CARD VISUALS ================= */
+
+.problem-card {
+  transition: transform 320ms ease, border-color 320ms ease, box-shadow 320ms ease;
+}
+
+.problem-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(138, 111, 46, 0.36);
+  box-shadow: 0 26px 60px -38px rgba(21, 19, 15, 0.55);
+}
+
+.problem-visual {
+  position: relative;
+  height: 168px;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(28, 25, 18, 0.08);
+  background:
+    radial-gradient(circle at 78% 20%, rgba(201, 162, 75, 0.24), transparent 30%),
+    linear-gradient(140deg, rgba(245, 241, 230, 0.98), rgba(232, 224, 204, 0.86));
+}
+
+.problem-visual::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(21, 19, 15, 0.055) 1px, transparent 0);
+  background-size: 20px 20px;
+  mask-image: linear-gradient(to bottom, black, transparent 88%);
+}
+
+.problem-visual-kicker {
+  position: absolute;
+  z-index: 3;
+  top: 16px;
+  left: 18px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 11px;
+  border: 1px solid rgba(28, 25, 18, 0.09);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  color: #6B6455;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.67rem;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+
+.visual-window {
+  position: absolute;
+  border: 1px solid rgba(28, 25, 18, 0.12);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 18px 34px -22px rgba(21, 19, 15, 0.45);
+}
+
+.visual-window-back {
+  width: 145px;
+  height: 88px;
+  right: 30px;
+  bottom: 17px;
+  transform: rotate(7deg);
+  opacity: 0.56;
+}
+
+.visual-window-front {
+  width: 158px;
+  height: 96px;
+  left: 38px;
+  bottom: 20px;
+  padding: 18px;
+  animation: visualCardFloat 6s ease-in-out infinite;
+}
+
+.visual-window-front span {
+  display: block;
+  height: 7px;
+  margin-bottom: 9px;
+  border-radius: 999px;
+  background: rgba(28, 25, 18, 0.12);
+}
+
+.visual-window-front span:nth-child(2) {
+  width: 62%;
+}
+
+.visual-window-front strong {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border-radius: 50%;
+  background: #15130F;
+  color: #F2ECDD;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.72rem;
+}
+
+.visual-copy-lines {
+  position: absolute;
+  left: 34px;
+  right: 64px;
+  bottom: 30px;
+  display: grid;
+  gap: 10px;
+}
+
+.visual-copy-lines span {
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(28, 25, 18, 0.14);
+}
+
+.visual-copy-lines .is-long { width: 88%; }
+.visual-copy-lines .is-medium { width: 68%; }
+.visual-copy-lines .is-short { width: 42%; }
+.visual-copy-lines .is-highlight {
+  width: 76%;
+  background: #C9A24B;
+  box-shadow: 0 8px 24px -10px rgba(201, 162, 75, 0.9);
+}
+
+.visual-route {
+  position: absolute;
+  right: 26px;
+  bottom: 31px;
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 50%;
+  background: #15130F;
+  color: #F2ECDD;
+  animation: visualPulse 3.6s ease-in-out infinite;
+}
+
+.visual-message {
+  position: absolute;
+  left: 32px;
+  right: 32px;
+  bottom: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 62px;
+  border-radius: 18px;
+  background: #15130F;
+  color: #F2ECDD;
+  box-shadow: 0 20px 36px -22px rgba(21, 19, 15, 0.7);
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 650;
+}
+
+.visual-message i {
+  color: #D9BC78;
+  font-size: 1.25rem;
+}
+
+.visual-cursor {
+  position: absolute;
+  right: 20px;
+  bottom: 18px;
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border-radius: 50%;
+  background: #C9A24B;
+  color: #15130F;
+  box-shadow: 0 12px 24px -14px rgba(21, 19, 15, 0.7);
+  animation: visualCursorTap 3s ease-in-out infinite;
+}
+
+.visual-phone {
+  position: absolute;
+  left: 50%;
+  bottom: -26px;
+  width: 104px;
+  height: 145px;
+  transform: translateX(-50%);
+  border: 5px solid #15130F;
+  border-radius: 23px;
+  background: #fffdf7;
+  box-shadow: 0 22px 42px -28px rgba(21, 19, 15, 0.65);
+  padding: 22px 12px 12px;
+  animation: visualPhoneFloat 6.2s ease-in-out infinite;
+}
+
+.visual-phone-notch {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  width: 36px;
+  height: 7px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: #15130F;
+}
+
+.visual-phone-hero,
+.visual-phone-line,
+.visual-phone-button {
+  display: block;
+  border-radius: 7px;
+}
+
+.visual-phone-hero {
+  height: 34px;
+  background: linear-gradient(135deg, #C9A24B, #9A3F2C);
+}
+
+.visual-phone-line {
+  height: 7px;
+  margin-top: 10px;
+  background: rgba(28, 25, 18, 0.16);
+}
+
+.visual-phone-line.is-short { width: 62%; }
+
+.visual-phone-button {
+  height: 20px;
+  margin-top: 12px;
+  background: #15130F;
+}
+
+.visual-swipe {
+  position: absolute;
+  right: 26px;
+  bottom: 24px;
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.78);
+  color: #8A6F2E;
+  border: 1px solid rgba(28, 25, 18, 0.1);
+}
+
+.visual-choice-card {
+  position: absolute;
+  bottom: 26px;
+  display: grid;
+  width: 106px;
+  height: 76px;
+  place-items: center;
+  border-radius: 16px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+.visual-choice-card.is-muted {
+  left: 36px;
+  border: 1px dashed rgba(28, 25, 18, 0.2);
+  background: rgba(255, 255, 255, 0.48);
+  color: rgba(28, 25, 18, 0.35);
+  transform: rotate(-4deg);
+}
+
+.visual-choice-card.is-selected {
+  right: 36px;
+  background: #15130F;
+  color: #F2ECDD;
+  box-shadow: 0 20px 38px -24px rgba(21, 19, 15, 0.72);
+  transform: rotate(3deg);
+  animation: visualCardFloat 6s ease-in-out infinite;
+}
+
+.visual-choice-card.is-selected i {
+  position: absolute;
+  top: -11px;
+  right: -11px;
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border-radius: 50%;
+  background: #C9A24B;
+  color: #15130F;
+  font-size: 0.9rem;
+}
+
+@keyframes visualCardFloat {
+  0%, 100% { transform: translateY(0) rotate(-1deg); }
+  50% { transform: translateY(-7px) rotate(1deg); }
+}
+
+@keyframes visualPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+@keyframes visualCursorTap {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  45% { transform: translate3d(-8px, -10px, 0) scale(0.92); }
+  60% { transform: translate3d(-8px, -10px, 0) scale(1.08); }
+}
+
+@keyframes visualPhoneFloat {
+  0%, 100% { transform: translateX(-50%) translateY(0) rotate(-1deg); }
+  50% { transform: translateX(-50%) translateY(-7px) rotate(1deg); }
+}
+
+@media (max-width: 640px) {
+  .hero-preview-card {
+    animation-duration: 8.5s;
+  }
+
+  .problem-visual {
+    height: 156px;
+  }
+}

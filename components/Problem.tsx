@@ -1,21 +1,88 @@
 import { problem } from "@/data/content";
 import AutoScroller from "./AutoScroller";
-import ImageWithFallback from "./ImageWithFallback";
 import Reveal from "./Reveal";
 
 type ProblemCardData = (typeof problem.cards)[number];
 
+type ProblemVisualProps = {
+  card: ProblemCardData;
+};
+
+function ProblemVisual({ card }: ProblemVisualProps) {
+  if (card.visual === "perception") {
+    return (
+      <div className="problem-visual problem-visual-perception" aria-hidden="true">
+        <span className="problem-visual-kicker">Prima impressione</span>
+        <div className="visual-window visual-window-back" />
+        <div className="visual-window visual-window-front">
+          <span />
+          <span />
+          <strong>3 sec</strong>
+        </div>
+      </div>
+    );
+  }
+
+  if (card.visual === "clarity") {
+    return (
+      <div className="problem-visual problem-visual-clarity" aria-hidden="true">
+        <span className="problem-visual-kicker">Messaggio chiaro</span>
+        <div className="visual-copy-lines">
+          <span className="is-long" />
+          <span className="is-highlight" />
+          <span className="is-medium" />
+          <span className="is-short" />
+        </div>
+        <div className="visual-route"><i className="ti ti-arrow-right" /></div>
+      </div>
+    );
+  }
+
+  if (card.visual === "contact") {
+    return (
+      <div className="problem-visual problem-visual-contact" aria-hidden="true">
+        <span className="problem-visual-kicker">Azione immediata</span>
+        <div className="visual-message">
+          <i className="ti ti-brand-whatsapp" />
+          <span>Scrivimi ora</span>
+        </div>
+        <span className="visual-cursor"><i className="ti ti-pointer" /></span>
+      </div>
+    );
+  }
+
+  if (card.visual === "mobile") {
+    return (
+      <div className="problem-visual problem-visual-mobile" aria-hidden="true">
+        <span className="problem-visual-kicker">Mobile-first</span>
+        <div className="visual-phone">
+          <span className="visual-phone-notch" />
+          <span className="visual-phone-hero" />
+          <span className="visual-phone-line" />
+          <span className="visual-phone-line is-short" />
+          <span className="visual-phone-button" />
+        </div>
+        <span className="visual-swipe"><i className="ti ti-arrows-horizontal" /></span>
+      </div>
+    );
+  }
+
+  return (
+    <div className="problem-visual problem-visual-choice" aria-hidden="true">
+      <span className="problem-visual-kicker">Scelta più semplice</span>
+      <div className="visual-choice-card is-muted"><span>A</span></div>
+      <div className="visual-choice-card is-selected">
+        <span>B</span>
+        <i className="ti ti-check" />
+      </div>
+    </div>
+  );
+}
+
 function ProblemCard({ card }: { card: ProblemCardData }) {
   return (
-    <div className="w-[82vw] max-w-[320px] sm:w-[340px] lg:w-[360px] shrink-0 overflow-hidden rounded-2xl border border-graphite/10 bg-white/78 shadow-sm transition-colors hover:border-gold-deep/35 snap-start">
-      <ImageWithFallback
-        src={card.image}
-        alt={card.title}
-        width={card.width}
-        height={card.height}
-        className="h-36 sm:h-40 w-full bg-ivory-dim !block"
-        imgClassName="block"
-      />
+    <article className="problem-card w-[82vw] max-w-[320px] sm:w-[340px] lg:w-[360px] shrink-0 overflow-hidden rounded-2xl border border-graphite/10 bg-white/78 shadow-sm snap-start">
+      <ProblemVisual card={card} />
       <div className="p-6">
         <span className="font-display font-semibold text-3xl text-gold-deep">{card.label}</span>
         <h3 className="mt-3 font-display font-semibold text-graphite leading-snug">{card.title}</h3>
@@ -29,7 +96,7 @@ function ProblemCard({ card }: { card: ProblemCardData }) {
           ))}
         </ul>
       </div>
-    </div>
+    </article>
   );
 }
 
@@ -51,11 +118,23 @@ export default function Problem() {
           <Reveal delay={0.1}>
             <p className="mt-4 text-muted-dark leading-relaxed">{problem.text}</p>
           </Reveal>
+          <Reveal delay={0.14}>
+            <p className="mt-5 inline-flex items-center gap-2 rounded-full border border-graphite/10 bg-white/55 px-4 py-2 text-xs font-display font-semibold text-muted-dark">
+              <i className="ti ti-hand-move" aria-hidden="true" />
+              Passa sopra o trascina: le card si fermano e poi ripartono.
+            </p>
+          </Reveal>
         </div>
       </div>
 
       <Reveal delay={0.1} className="mt-9 md:mt-11">
-        <AutoScroller ariaLabel="Schede situazione di partenza" speed={34} className="px-5 sm:px-8" trackClassName="gap-5">
+        <AutoScroller
+          ariaLabel="Schede situazione di partenza"
+          speed={34}
+          resumeDelay={5200}
+          className="px-5 sm:px-8"
+          trackClassName="gap-5"
+        >
           {problem.cards.map((card) => (
             <ProblemCard key={card.label} card={card} />
           ))}

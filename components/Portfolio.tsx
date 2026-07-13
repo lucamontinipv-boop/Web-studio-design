@@ -1,8 +1,33 @@
 import { portfolio, WHATSAPP_LINK } from "@/data/content";
+import AutoScroller from "./AutoScroller";
 import ImageWithFallback from "./ImageWithFallback";
 import Reveal from "./Reveal";
 
 type Project = (typeof portfolio.projects)[number];
+type GalleryShot = Project["gallery"][number];
+
+function ProjectShot({ shot, projectTitle }: { shot: GalleryShot; projectTitle: string }) {
+  return (
+    <figure className="project-shot group w-[210px] xs:w-[230px] sm:w-[260px] lg:w-[280px] shrink-0 overflow-hidden rounded-[1.35rem] border border-white/12 bg-ink-soft shadow-2xl shadow-black/25 snap-start">
+      <div className="flex h-8 items-center gap-1.5 border-b border-white/8 bg-white/[0.045] px-3" aria-hidden="true">
+        <span className="h-2 w-2 rounded-full bg-clay/85" />
+        <span className="h-2 w-2 rounded-full bg-gold/85" />
+        <span className="h-2 w-2 rounded-full bg-cream/35" />
+      </div>
+      <ImageWithFallback
+        src={shot.image}
+        alt={`${projectTitle}: ${shot.alt}`}
+        width={shot.width}
+        height={shot.height}
+        className="aspect-[9/16] w-full bg-ink-soft"
+        imgClassName="object-top transition-transform duration-700 group-hover:scale-[1.018]"
+      />
+      <figcaption className="border-t border-white/8 bg-ink-soft/95 px-4 py-3 text-xs font-display font-semibold text-muted-light">
+        {shot.label}
+      </figcaption>
+    </figure>
+  );
+}
 
 function ProjectCard({ project }: { project: Project }) {
   return (
@@ -14,7 +39,7 @@ function ProjectCard({ project }: { project: Project }) {
           width={project.width}
           height={project.height}
           className="aspect-[3/2] w-full bg-ink-soft"
-          imgClassName="transition-transform duration-700 group-hover:scale-[1.03]"
+          imgClassName="object-top transition-transform duration-700 group-hover:scale-[1.03]"
         />
       </a>
       <div className="p-6 sm:p-7">
@@ -63,9 +88,49 @@ export default function Portfolio() {
           <Reveal delay={0.1}>
             <p className="mt-4 text-muted-light leading-relaxed max-w-2xl">{portfolio.subtitle}</p>
           </Reveal>
+          <Reveal delay={0.14}>
+            <p className="mt-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.055] px-4 py-2 text-xs font-display font-semibold text-muted-light">
+              <i className="ti ti-hand-move" aria-hidden="true" />
+              Trascina le schermate: il movimento si ferma e riparte automaticamente.
+            </p>
+          </Reveal>
         </div>
+      </div>
 
-        <div className="mt-10 md:mt-14 grid lg:grid-cols-2 gap-6">
+      <div className="mt-11 md:mt-14 space-y-9 md:space-y-12">
+        {portfolio.projects.map((project, index) => (
+          <Reveal key={`${project.title}-gallery`} delay={0.06 + index * 0.08}>
+            <div>
+              <div className="max-w-6xl mx-auto px-5 sm:px-8 mb-4 flex items-center justify-between gap-4">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.14em] text-gold font-display font-semibold">{project.tag}</p>
+                  <h3 className="mt-1 font-display font-semibold text-xl sm:text-2xl text-cream">{project.title}</h3>
+                </div>
+                <span className="hidden sm:inline-flex items-center gap-2 text-xs text-muted-light">
+                  {index % 2 === 0 ? "Scorre verso sinistra" : "Scorre verso destra"}
+                  <i className={`ti ${index % 2 === 0 ? "ti-arrow-left" : "ti-arrow-right"}`} aria-hidden="true" />
+                </span>
+              </div>
+
+              <AutoScroller
+                ariaLabel={`Schermate del progetto ${project.title}`}
+                speed={index % 2 === 0 ? 28 : 25}
+                direction={index % 2 === 0 ? "left" : "right"}
+                resumeDelay={5600}
+                className="px-5 sm:px-8"
+                trackClassName="gap-4 sm:gap-5"
+              >
+                {project.gallery.map((shot) => (
+                  <ProjectShot key={shot.image} shot={shot} projectTitle={project.title} />
+                ))}
+              </AutoScroller>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+        <div className="mt-14 md:mt-20 grid lg:grid-cols-2 gap-6">
           {portfolio.projects.map((project, i) => (
             <Reveal key={project.title} delay={0.08 + i * 0.08}>
               <ProjectCard project={project} />
