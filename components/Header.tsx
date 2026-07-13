@@ -25,7 +25,7 @@ export default function Header() {
       <div className="max-w-6xl mx-auto px-5 sm:px-8 h-16 md:h-20 flex items-center justify-between gap-4">
         <a
           href="#top"
-          className="font-display font-semibold text-xl sm:text-2xl md:text-[1.7rem] tracking-tight text-graphite"
+          className="font-sans font-semibold text-xl sm:text-2xl md:text-[1.7rem] tracking-tight text-graphite"
           aria-label="Torna all'inizio"
         >
           web<span className="text-gold-deep">-</span>studiodesign
