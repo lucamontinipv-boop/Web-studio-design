@@ -3,7 +3,6 @@ export const WHATSAPP_LINK =
 
 export const nav = [
   { label: "Progetti", href: "#progetti" },
-  { label: "Come lavoro", href: "#processo" },
   { label: "Preventivo", href: "#preventivo" },
   { label: "FAQ", href: "#faq" },
 ];

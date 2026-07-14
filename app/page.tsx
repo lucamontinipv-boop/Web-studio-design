@@ -7,7 +7,6 @@ import Hero from "@/components/Hero";
 import Portfolio from "@/components/Portfolio";
 import Pricing from "@/components/Pricing";
 import Problem from "@/components/Problem";
-import Process from "@/components/Process";
 import WhyLuca from "@/components/WhyLuca";
 
 export default function Home() {
@@ -20,7 +19,6 @@ export default function Home() {
         <Benefits />
         <Portfolio />
         <WhyLuca />
-        <Process />
         <Pricing />
         <FAQ />
         <FinalCTA />

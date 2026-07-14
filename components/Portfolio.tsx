@@ -31,7 +31,7 @@ function ProjectShot({ shot, projectTitle }: { shot: GalleryShot; projectTitle: 
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="h-full rounded-2xl border border-white/10 bg-white/[0.055] p-6 sm:p-8 shadow-lg shadow-black/20 transition-colors hover:border-gold/35">
+    <article className="portfolio-detail-card h-full w-full min-w-0 max-w-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.055] p-6 sm:p-8 shadow-lg shadow-black/20 transition-colors hover:border-gold/35">
       <div className="flex items-start justify-between gap-5">
         <div>
           <span className="text-xs uppercase tracking-[0.12em] text-gold font-display font-semibold">{project.tag}</span>
@@ -51,19 +51,19 @@ function ProjectCard({ project }: { project: Project }) {
       <dl className="mt-7 grid gap-5 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
         <div>
           <dt className="text-xs uppercase tracking-[0.12em] text-gold-soft font-display font-semibold">La sfida</dt>
-          <dd className="mt-2 text-sm text-muted-light leading-relaxed">{project.challenge}</dd>
+          <dd className="mt-2 break-words text-sm text-muted-light leading-relaxed">{project.challenge}</dd>
         </div>
         <div>
           <dt className="text-xs uppercase tracking-[0.12em] text-gold-soft font-display font-semibold">La soluzione</dt>
-          <dd className="mt-2 text-sm text-muted-light leading-relaxed">{project.intervention}</dd>
+          <dd className="mt-2 break-words text-sm text-muted-light leading-relaxed">{project.intervention}</dd>
         </div>
       </dl>
 
-      <p className="mt-6 rounded-xl border border-white/8 bg-black/10 px-4 py-3 text-sm leading-relaxed text-cream/90">
+      <p className="mt-6 max-w-full break-words rounded-xl border border-white/8 bg-black/10 px-4 py-3 text-sm leading-relaxed text-cream/90">
         {project.result}
       </p>
 
-      <blockquote className="mt-6 border-l-2 border-gold pl-4">
+      <blockquote className="mt-6 max-w-full break-words border-l-2 border-gold pl-4">
         <p className="text-[0.95rem] italic leading-relaxed text-cream">“{project.testimonial}”</p>
         <footer className="mt-3 text-xs font-display font-semibold uppercase tracking-[0.1em] text-gold-soft">
           {project.testimonialAuthor}
@@ -84,7 +84,7 @@ function ProjectCard({ project }: { project: Project }) {
 
 export default function Portfolio() {
   return (
-    <section id="progetti" className="py-20 md:py-28 bg-ink overflow-hidden">
+    <section id="progetti" className="portfolio-section w-full max-w-full overflow-x-clip bg-ink py-20 md:py-28">
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
         <div className="max-w-3xl">
           <Reveal>
@@ -102,8 +102,8 @@ export default function Portfolio() {
       <div className="mt-11 md:mt-14 space-y-9 md:space-y-12">
         {portfolio.projects.map((project, index) => (
           <Reveal key={`${project.title}-gallery`} delay={0.06 + index * 0.08}>
-            <div>
-              <div className="max-w-6xl mx-auto px-5 sm:px-8 mb-4 flex items-center justify-between gap-4">
+            <div className="min-w-0 max-w-full overflow-hidden">
+              <div className="max-w-6xl mx-auto px-5 sm:px-8 mb-4 flex min-w-0 items-center justify-between gap-4">
                 <div>
                   <p className="text-xs uppercase tracking-[0.14em] text-gold font-display font-semibold">{project.tag}</p>
                   <h3 className="mt-1 font-display font-semibold text-xl sm:text-2xl text-cream">{project.title}</h3>
@@ -119,7 +119,7 @@ export default function Portfolio() {
                 speed={index % 2 === 0 ? 28 : 25}
                 direction={index % 2 === 0 ? "left" : "right"}
                 resumeDelay={5600}
-                className="px-5 sm:px-8"
+                className="w-full min-w-0 max-w-full px-5 sm:px-8"
                 trackClassName="gap-4 sm:gap-5"
               >
                 {project.gallery.map((shot) => (
@@ -132,9 +132,9 @@ export default function Portfolio() {
       </div>
 
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
-        <div className="mt-14 md:mt-20 grid lg:grid-cols-2 gap-6">
+        <div className="portfolio-detail-grid mt-14 grid min-w-0 gap-6 md:mt-20 lg:grid-cols-2">
           {portfolio.projects.map((project, i) => (
-            <Reveal key={project.title} delay={0.08 + i * 0.08}>
+            <Reveal key={project.title} delay={0.08 + i * 0.08} className="w-full min-w-0 max-w-full">
               <ProjectCard project={project} />
             </Reveal>
           ))}

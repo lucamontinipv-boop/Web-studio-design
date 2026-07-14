@@ -120,12 +120,13 @@ body {
   overflow-x: auto;
   overflow-y: hidden;
   width: 100%;
-  max-width: 100vw;
+  max-width: 100%;
+  min-width: 0;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-x: contain;
-  touch-action: pan-x pan-y;
+  touch-action: pan-y pinch-zoom;
   cursor: grab;
-  contain: layout paint;
+  contain: inline-size layout paint;
 }
 
 .auto-scroll-strip:active,
@@ -618,6 +619,29 @@ i.ti::before {
   line-height: 1;
 }
 
+
+
+/* Portfolio stability on mobile Safari.
+   The animated max-content tracks must never influence the page or grid width. */
+.portfolio-section,
+.portfolio-detail-grid,
+.portfolio-detail-grid > *,
+.portfolio-detail-card {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.portfolio-detail-card {
+  overflow-wrap: anywhere;
+}
+
+@supports (overflow: clip) {
+  .portfolio-section {
+    overflow-x: clip;
+  }
+}
+
 /* ================= PERFORMANCE-FIRST RENDERING ================= */
 
 /* Keep the initial viewport light. Chromium renders these sections when they
@@ -629,6 +653,13 @@ i.ti::before {
     contain-intrinsic-size: auto 900px;
   }
 
+  /* The portfolio contains continuously transformed marquee tracks.
+     Keeping this section fully laid out prevents transient over-wide cards
+     while Safari activates content-visibility during vertical scrolling. */
+  #progetti {
+    content-visibility: visible;
+    contain: none;
+  }
 }
 
 /* CSS-only marquee interaction states. */
