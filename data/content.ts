@@ -41,7 +41,7 @@ export const hero = {
 
 export const problem = {
   eyebrow: "La situazione di partenza",
-  title: "Il problema non è sempre quello che fai. È quello che si capisce quando qualcuno ti trova online.",
+  title: "Il problema non è il valore del tuo lavoro. È quanto il tuo sito riesce a farlo percepire.",
   text: "Chi arriva sul tuo sito non conosce ancora il valore del tuo lavoro. Deve capire in poco tempo chi sei, cosa offri e quale passo fare dopo.",
   cards: [
     {
@@ -268,7 +268,7 @@ export const pricing = {
   eyebrow: "Preventivo trasparente",
   title: "Landing page a partire da 300 €.",
   text: "Il prezzo di partenza riguarda una landing page essenziale, costruita su una struttura chiara e con le funzionalità concordate. Il costo finale dipende da contenuti, numero di sezioni, integrazioni e livello di personalizzazione. Prima di iniziare ricevi sempre una proposta completa con tempi, attività incluse e prezzo definitivo.",
-  startingPrice: "300 €",
+  startingPrice: "300€",
   startingPriceLabel: "Prezzo di partenza",
   startingPriceNote: "Per una landing page essenziale. Dominio, servizi esterni e richieste aggiuntive vengono indicati separatamente.",
   included: [
