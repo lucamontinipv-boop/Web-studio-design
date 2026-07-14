@@ -15,7 +15,7 @@ export const hero = {
   subtitle:
     "Progetto pagine chiare, veloci e su misura che aiutano chi ti trova da Google, Instagram o passaparola a capire cosa offri, fidarsi e contattarti senza perdere tempo.",
   ctaPrimary: "Parliamo del tuo sito",
-  ctaSecondary: "Guarda i progetti reali",
+  ctaSecondary: "Guarda i progetti",
   proof: ["Design su misura", "Mobile-first", "WhatsApp integrato", "Un referente diretto"],
   previews: [
     {
