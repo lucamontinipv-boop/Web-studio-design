@@ -265,20 +265,31 @@ export const process = {
 
 export const pricing = {
   eyebrow: "Preventivo trasparente",
-  title: "Landing page a partire da 300 €.",
-  text: "Il prezzo di partenza riguarda una landing page essenziale, costruita su una struttura chiara e con le funzionalità concordate. Il costo finale dipende da contenuti, numero di sezioni, integrazioni e livello di personalizzazione. Prima di iniziare ricevi sempre una proposta completa con tempi, attività incluse e prezzo definitivo.",
-  startingPrice: "300€",
-  startingPriceLabel: "Prezzo di partenza",
-  startingPriceNote: "Per una landing page essenziale. Dominio, servizi esterni e richieste aggiuntive vengono indicati separatamente.",
+  title: "Una landing page completa, senza costi nascosti.",
+  text: "Per una landing page professionale parto da 400 €. Prima di iniziare analizziamo insieme attività, obiettivi e materiali disponibili. Ricevi poi un preventivo chiaro con tutto ciò che realizzerò, le tempistiche e il prezzo definitivo.",
+  startingPrice: "400€",
+  startingPriceLabel: "Investimento di partenza",
+  startingPriceNote: "Per una landing page professionale completa. Gli eventuali costi annuali di dominio o servizi esterni restano separati e sempre indicati prima dell'inizio.",
+  includedTitle: "Cosa include il progetto",
   included: [
-    "Numero di pagine o sezioni",
-    "Supporto su testi e struttura",
-    "Numero di revisioni incluse",
-    "Collegamento WhatsApp, form o Maps",
-    "Pubblicazione e configurazione dominio",
-    "Eventuale assistenza successiva",
+    "Analisi iniziale dell'attività",
+    "Organizzazione strategica dei contenuti",
+    "Miglioramento e revisione dei testi",
+    "Design personalizzato sulla tua identità",
+    "Ottimizzazione per mobile, tablet e desktop",
+    "Collegamento e configurazione del dominio",
+    "Pubblicazione definitiva del sito",
+    "Pulsanti telefono, WhatsApp, Instagram e Google Maps",
+    "Inserimento di orari, contatti e informazioni utili",
+    "SEO locale essenziale",
+    "Configurazione di Google Analytics",
+    "Favicon, title e metadati essenziali",
+    "Cookie banner essenziale",
+    "Due cicli di modifiche",
+    "Consegna di tutti gli accessi",
+    "30 giorni di assistenza tecnica dopo la pubblicazione",
   ],
-  cta: "Richiedi una prima valutazione",
+  cta: "Richiedi una valutazione gratuita",
 };
 
 export const faq = {
@@ -295,7 +306,7 @@ export const faq = {
     },
     {
       q: "Quanto costa?",
-      a: "Le landing page essenziali partono da 300 €. Il prezzo finale dipende da struttura, contenuti, integrazioni e livello di personalizzazione. Dopo la prima conversazione ricevi un preventivo chiaro prima di iniziare qualsiasi lavoro.",
+      a: "Le landing page professionali partono da 400 €. Il prezzo finale dipende da struttura, contenuti, integrazioni e livello di personalizzazione. Dopo la prima conversazione ricevi un preventivo chiaro prima di iniziare qualsiasi lavoro.",
     },
     {
       q: "Cosa è incluso nel preventivo?",

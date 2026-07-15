@@ -43,7 +43,7 @@ export default function Pricing() {
 
           <Reveal delay={0.08}>
             <div className="rounded-2xl border border-graphite/10 bg-white/70 p-6 sm:p-8 shadow-sm">
-              <p className="text-xs uppercase tracking-[0.14em] text-clay font-display font-semibold">Nel preventivo trovi</p>
+              <p className="text-xs uppercase tracking-[0.14em] text-clay font-display font-semibold">{pricing.includedTitle}</p>
               <ul className="mt-6 grid sm:grid-cols-2 gap-4">
                 {pricing.included.map((item) => (
                   <li key={item} className="flex items-start gap-3 text-sm text-graphite/85 leading-relaxed">
