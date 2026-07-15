@@ -23,7 +23,7 @@ export const hero = {
       height: 1991,
       category: "Coaching e personal brand",
       title: "Kaiemi Coaching",
-      href: "https://kaiemi-next.vercel.app/",
+      href: "https://www.kaiemi.it/",
       cta: "Visita il progetto",
     },
     {
@@ -126,7 +126,7 @@ export const portfolio = {
       testimonial:
         "Luca è riuscito a trasformare tutte le mie idee in una pagina finalmente chiara e coerente.",
       testimonialAuthor: "Noemi — Kaiemi Coaching",
-      href: "https://kaiemi-next.vercel.app/",
+      href: "https://www.kaiemi.it/",
       cta: "Visita Kaiemi Coaching",
       gallery: [
         {

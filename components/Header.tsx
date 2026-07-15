@@ -1,4 +1,5 @@
 import { nav, WHATSAPP_LINK } from "@/data/content";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 function WhatsAppIcon({ className = "" }: { className?: string }) {
   return (
@@ -40,7 +41,8 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <LanguageSwitcher />
           <a
             href={WHATSAPP_LINK}
             target="_blank"
